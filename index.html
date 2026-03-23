@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shafyy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <div class="navbar">
+        <nav>
+            <h1 class="logo">Perfume</h1>
+
+            <button class="menu-toggle" onclick="document.querySelector('ul').classList.toggle('open'); this.classList.toggle('active')">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul>
+                <li>Home</li>
+                <li>Products</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- ===== HERO / SEARCH ===== -->
+    <div class="searchbar reveal">
+        <h2 class="tagline">Discover Your Signature Scent</h2>
+        <input placeholder="Search fragrances..." id="search-input">
+    </div>
+
+    <!-- ===== PRODUCTS ===== -->
+    <div class="section-title reveal">
+        <h2>Our Collection</h2>
+        <div class="underline"></div>
+    </div>
+
+    <div class="products">
+        <div class="box reveal reveal-delay-1">
+            <div class="img-wrapper">
+                <img src="perfume 1.webp" alt="Perfume 1">
+                <div class="overlay">View Details</div>
+            </div>
+            <div class="box-content">
+                <h3>Midnight Rose</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam nisi tempora aut fugiat placeat adipisci excepturi facere voluptas culpa sint!</p>
+            </div>
+        </div>
+
+        <div class="box reveal reveal-delay-2">
+            <div class="img-wrapper">
+                <img src="perfume 2.webp" alt="Perfume 2">
+                <div class="overlay">View Details</div>
+            </div>
+            <div class="box-content">
+                <h3>Ocean Breeze</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam nisi tempora aut fugiat placeat adipisci excepturi facere voluptas culpa sint!</p>
+            </div>
+        </div>
+
+        <div class="box reveal reveal-delay-3">
+            <div class="img-wrapper">
+                <img src="perfume 3.webp" alt="Perfume 3">
+                <div class="overlay">View Details</div>
+            </div>
+            <div class="box-content">
+                <h3>Golden Amber</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam nisi tempora aut fugiat placeat adipisci excepturi facere voluptas culpa sint!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <div class="about reveal">
+        <h2>About Us</h2>
+        <div class="underline"></div>
+        <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque architecto voluptatibus quam, voluptatum deleniti reiciendis, nulla dolorum fuga neque aspernatur eum adipisci maxime totam expedita natus, voluptatem modi aut vel odio ducimus enim explicabo! Rerum porro officia mollitia magnam repellendus perferendis, aut consequatur vero omnis eius ut explicabo eligendi voluptatibus officiis corrupti atque placeat nihil, possimus quo, quia quibusdam. Aspernatur a ducimus, voluptatibus ut molestiae at id ab minima nulla numquam exercitationem in quo alias inventore, minus nisi iure corrupti libero reprehenderit, voluptatem soluta labore architecto consequatur? Eum, adipisci quae distinctio ipsa natus voluptatem. Magnam laboriosam nemo ipsam error, perferendis enim soluta modi cupiditate. Dolor est aliquid ratione deleniti quam?</p>
+    </div>
+
+    <!-- ===== CONTACT / FOOTER ===== -->
+    <div class="contact reveal">
+        <h2>Contact</h2>
+        <div class="underline light"></div>
+        <div class="contact-details">
+            <div class="contact-item">
+                <span class="contact-icon">📞</span>
+                <h3>+91 9677671695</h3>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">✉️</span>
+                <h3>Perfume.official@gmail.com</h3>
+            </div>
+        </div>
+        <p class="end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium ipsa quis nesciunt minima aliquid veritatis, amet obcaecati voluptas cum officiis consequuntur voluptatibus incidunt? Ut, velit vero possimus rerum atque ad adipisci doloremque fuga quos quae natus aliquid placeat fugiat aliquam tempora quas quam voluptatem nobis nostrum cumque, veritatis voluptate?</p>
+    </div>
+
+    <!-- ===== SCROLL-TO-TOP BUTTON ===== -->
+    <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // Scroll-reveal: add 'active' class when elements enter the viewport
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 80) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        // Scroll-to-top button visibility
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        const toggleScrollBtn = () => {
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+        };
+
+        window.addEventListener('scroll', () => {
+            revealOnScroll();
+            toggleScrollBtn();
+        });
+
+        // Trigger on load for elements already in view
+        revealOnScroll();
+
+        // Search bar focus glow effect
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('focus', () => searchInput.parentElement.classList.add('focused'));
+        searchInput.addEventListener('blur', () => searchInput.parentElement.classList.remove('focused'));
+    </script>
+
+</body>
+</html>
